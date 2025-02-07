@@ -6,7 +6,7 @@ Clean plates cannot be placed on sink
 
 food cannot be placed on sink
 
-only "fryiables" putty can be placed on frying pots
+only "fryiables" (like putty) can be placed on frying pots
 
 Choppable food, cannot be placed on plates unless is chopped
 
