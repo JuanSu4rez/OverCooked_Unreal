@@ -1,10 +1,8 @@
 To do list:
 
-plates cannot be placed on stove
+plates cannot be placed on stove (Done, needs to be tested)
 
-Clean plates cannot be placed on sink
-
-food cannot be placed on sink
+Clean plates cannot be placed on sink (Done, needs to be tested)
 
 only "fryiables" (like putty) can be placed on frying pots
 
