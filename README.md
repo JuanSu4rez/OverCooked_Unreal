@@ -1,12 +1,6 @@
 To do list:
 
-plates cannot be placed on stove (Done, needs to be tested)
-
-Clean plates cannot be placed on sink (Done, needs to be tested)
-
 only "fryiables" (like putty) can be placed on frying pots
-
-Choppable food, cannot be placed on plates unless is chopped
 
 once an ingredient is placed on a plate, it cannot be removed => only way to get rid off whatever is on the plate is disposing it
 
