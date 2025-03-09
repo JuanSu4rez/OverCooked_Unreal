@@ -1,6 +1,14 @@
 To do list:
 
-only "fryiables" (like putty) can be placed on frying pots
+Propagate fire to counters 
 
-Fire extinguisher can be placed ONLY in counters (no chopping board, no sink, stove, etc)
+Fiz particles effect (add smoke, turn them off, etc)
+
+Component to create random orders
+
+Widget to visualize current orders
+
+Logic to check the ingredients when a order is delivered
+
+
 
