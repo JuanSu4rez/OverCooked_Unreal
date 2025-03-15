@@ -1,0 +1,28 @@
+{
+	"configurations": [
+		{
+			"name": "OverCookedEditor Editor Linux Development (OverCooked)",
+			"compilerPath": "/home/sebastian/Documents/Unreal Engine 5.4/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v22_clang-16.0.6-centos7/x86_64-unknown-linux-gnu/bin/clang++",
+			"compilerArgs": [
+				"-isysroot",
+				"/home/sebastian/Documents/Unreal Engine 5.4/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v22_clang-16.0.6-centos7/x86_64-unknown-linux-gnu"
+			],
+			"cStandard": "c17",
+			"cppStandard": "c++20",
+			"intelliSenseMode": "clang-x64",
+			"compileCommands": "/media/sebastian/TOSHIBA EXT/MSI_Laptop/Overcooked_Unreal/.vscode/compileCommands_OverCooked.json"
+		},
+		{
+			"name": "Linux",
+			"compilerPath": "/home/sebastian/Documents/Unreal Engine 5.4/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v22_clang-16.0.6-centos7/x86_64-unknown-linux-gnu/bin/clang++",
+			"compilerArgs": [
+				"-isysroot",
+				"/home/sebastian/Documents/Unreal Engine 5.4/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v22_clang-16.0.6-centos7/x86_64-unknown-linux-gnu"
+			],
+			"cStandard": "c17",
+			"cppStandard": "c++20",
+			"intelliSenseMode": "clang-x64",
+			"compileCommands": "/media/sebastian/TOSHIBA EXT/MSI_Laptop/Overcooked_Unreal/.vscode/compileCommands_Default.json"
+		}
+	]
+}

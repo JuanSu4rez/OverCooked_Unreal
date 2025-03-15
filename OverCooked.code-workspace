@@ -1,0 +1,865 @@
+{
+	"folders": [
+		{
+			"name": "OverCooked",
+			"path": "."
+		},
+		{
+			"name": "UE5",
+			"path": "/home/sebastian/Documents/Unreal Engine 5.4"
+		}
+	],
+	"settings": {
+		"typescript.tsc.autoDetect": "off",
+		"npm.autoDetect": "off"
+	},
+	"extensions": {
+		"recommendations": [
+			"ms-vscode.cpptools",
+			"ms-dotnettools.csharp"
+		]
+	},
+	"tasks": {
+		"version": "2.0.0",
+		"tasks": [
+			{
+				"label": "OverCooked Linux Debug Build",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"OverCooked",
+					"Linux",
+					"Debug",
+					"/media/sebastian/TOSHIBA EXT/MSI_Laptop/Overcooked_Unreal/OverCooked.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/sebastian/Documents/Unreal Engine 5.4"
+				}
+			},
+			{
+				"label": "OverCooked Linux Debug Rebuild",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"OverCooked",
+					"Linux",
+					"Debug",
+					"/media/sebastian/TOSHIBA EXT/MSI_Laptop/Overcooked_Unreal/OverCooked.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"dependsOn": [
+					"OverCooked Linux Debug Clean"
+				],
+				"type": "shell",
+				"options": {
+					"cwd": "/home/sebastian/Documents/Unreal Engine 5.4"
+				}
+			},
+			{
+				"label": "OverCooked Linux Debug Clean",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"OverCooked",
+					"Linux",
+					"Debug",
+					"/media/sebastian/TOSHIBA EXT/MSI_Laptop/Overcooked_Unreal/OverCooked.uproject",
+					"-waitmutex",
+					"-clean"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/sebastian/Documents/Unreal Engine 5.4"
+				}
+			},
+			{
+				"label": "OverCooked Linux DebugGame Build",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"OverCooked",
+					"Linux",
+					"DebugGame",
+					"/media/sebastian/TOSHIBA EXT/MSI_Laptop/Overcooked_Unreal/OverCooked.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/sebastian/Documents/Unreal Engine 5.4"
+				}
+			},
+			{
+				"label": "OverCooked Linux DebugGame Rebuild",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"OverCooked",
+					"Linux",
+					"DebugGame",
+					"/media/sebastian/TOSHIBA EXT/MSI_Laptop/Overcooked_Unreal/OverCooked.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"dependsOn": [
+					"OverCooked Linux DebugGame Clean"
+				],
+				"type": "shell",
+				"options": {
+					"cwd": "/home/sebastian/Documents/Unreal Engine 5.4"
+				}
+			},
+			{
+				"label": "OverCooked Linux DebugGame Clean",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"OverCooked",
+					"Linux",
+					"DebugGame",
+					"/media/sebastian/TOSHIBA EXT/MSI_Laptop/Overcooked_Unreal/OverCooked.uproject",
+					"-waitmutex",
+					"-clean"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/sebastian/Documents/Unreal Engine 5.4"
+				}
+			},
+			{
+				"label": "OverCooked Linux Development Build",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"OverCooked",
+					"Linux",
+					"Development",
+					"/media/sebastian/TOSHIBA EXT/MSI_Laptop/Overcooked_Unreal/OverCooked.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/sebastian/Documents/Unreal Engine 5.4"
+				}
+			},
+			{
+				"label": "OverCooked Linux Development Rebuild",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"OverCooked",
+					"Linux",
+					"Development",
+					"/media/sebastian/TOSHIBA EXT/MSI_Laptop/Overcooked_Unreal/OverCooked.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"dependsOn": [
+					"OverCooked Linux Development Clean"
+				],
+				"type": "shell",
+				"options": {
+					"cwd": "/home/sebastian/Documents/Unreal Engine 5.4"
+				}
+			},
+			{
+				"label": "OverCooked Linux Development Clean",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"OverCooked",
+					"Linux",
+					"Development",
+					"/media/sebastian/TOSHIBA EXT/MSI_Laptop/Overcooked_Unreal/OverCooked.uproject",
+					"-waitmutex",
+					"-clean"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/sebastian/Documents/Unreal Engine 5.4"
+				}
+			},
+			{
+				"label": "OverCooked Linux Test Build",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"OverCooked",
+					"Linux",
+					"Test",
+					"/media/sebastian/TOSHIBA EXT/MSI_Laptop/Overcooked_Unreal/OverCooked.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/sebastian/Documents/Unreal Engine 5.4"
+				}
+			},
+			{
+				"label": "OverCooked Linux Test Rebuild",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"OverCooked",
+					"Linux",
+					"Test",
+					"/media/sebastian/TOSHIBA EXT/MSI_Laptop/Overcooked_Unreal/OverCooked.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"dependsOn": [
+					"OverCooked Linux Test Clean"
+				],
+				"type": "shell",
+				"options": {
+					"cwd": "/home/sebastian/Documents/Unreal Engine 5.4"
+				}
+			},
+			{
+				"label": "OverCooked Linux Test Clean",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"OverCooked",
+					"Linux",
+					"Test",
+					"/media/sebastian/TOSHIBA EXT/MSI_Laptop/Overcooked_Unreal/OverCooked.uproject",
+					"-waitmutex",
+					"-clean"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/sebastian/Documents/Unreal Engine 5.4"
+				}
+			},
+			{
+				"label": "OverCooked Linux Shipping Build",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"OverCooked",
+					"Linux",
+					"Shipping",
+					"/media/sebastian/TOSHIBA EXT/MSI_Laptop/Overcooked_Unreal/OverCooked.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/sebastian/Documents/Unreal Engine 5.4"
+				}
+			},
+			{
+				"label": "OverCooked Linux Shipping Rebuild",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"OverCooked",
+					"Linux",
+					"Shipping",
+					"/media/sebastian/TOSHIBA EXT/MSI_Laptop/Overcooked_Unreal/OverCooked.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"dependsOn": [
+					"OverCooked Linux Shipping Clean"
+				],
+				"type": "shell",
+				"options": {
+					"cwd": "/home/sebastian/Documents/Unreal Engine 5.4"
+				}
+			},
+			{
+				"label": "OverCooked Linux Shipping Clean",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"OverCooked",
+					"Linux",
+					"Shipping",
+					"/media/sebastian/TOSHIBA EXT/MSI_Laptop/Overcooked_Unreal/OverCooked.uproject",
+					"-waitmutex",
+					"-clean"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/sebastian/Documents/Unreal Engine 5.4"
+				}
+			},
+			{
+				"label": "OverCooked LinuxArm64 Debug Build",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"OverCooked",
+					"LinuxArm64",
+					"Debug",
+					"/media/sebastian/TOSHIBA EXT/MSI_Laptop/Overcooked_Unreal/OverCooked.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/sebastian/Documents/Unreal Engine 5.4"
+				}
+			},
+			{
+				"label": "OverCooked LinuxArm64 Debug Rebuild",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"OverCooked",
+					"LinuxArm64",
+					"Debug",
+					"/media/sebastian/TOSHIBA EXT/MSI_Laptop/Overcooked_Unreal/OverCooked.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"dependsOn": [
+					"OverCooked LinuxArm64 Debug Clean"
+				],
+				"type": "shell",
+				"options": {
+					"cwd": "/home/sebastian/Documents/Unreal Engine 5.4"
+				}
+			},
+			{
+				"label": "OverCooked LinuxArm64 Debug Clean",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"OverCooked",
+					"LinuxArm64",
+					"Debug",
+					"/media/sebastian/TOSHIBA EXT/MSI_Laptop/Overcooked_Unreal/OverCooked.uproject",
+					"-waitmutex",
+					"-clean"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/sebastian/Documents/Unreal Engine 5.4"
+				}
+			},
+			{
+				"label": "OverCooked LinuxArm64 DebugGame Build",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"OverCooked",
+					"LinuxArm64",
+					"DebugGame",
+					"/media/sebastian/TOSHIBA EXT/MSI_Laptop/Overcooked_Unreal/OverCooked.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/sebastian/Documents/Unreal Engine 5.4"
+				}
+			},
+			{
+				"label": "OverCooked LinuxArm64 DebugGame Rebuild",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"OverCooked",
+					"LinuxArm64",
+					"DebugGame",
+					"/media/sebastian/TOSHIBA EXT/MSI_Laptop/Overcooked_Unreal/OverCooked.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"dependsOn": [
+					"OverCooked LinuxArm64 DebugGame Clean"
+				],
+				"type": "shell",
+				"options": {
+					"cwd": "/home/sebastian/Documents/Unreal Engine 5.4"
+				}
+			},
+			{
+				"label": "OverCooked LinuxArm64 DebugGame Clean",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"OverCooked",
+					"LinuxArm64",
+					"DebugGame",
+					"/media/sebastian/TOSHIBA EXT/MSI_Laptop/Overcooked_Unreal/OverCooked.uproject",
+					"-waitmutex",
+					"-clean"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/sebastian/Documents/Unreal Engine 5.4"
+				}
+			},
+			{
+				"label": "OverCooked LinuxArm64 Development Build",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"OverCooked",
+					"LinuxArm64",
+					"Development",
+					"/media/sebastian/TOSHIBA EXT/MSI_Laptop/Overcooked_Unreal/OverCooked.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/sebastian/Documents/Unreal Engine 5.4"
+				}
+			},
+			{
+				"label": "OverCooked LinuxArm64 Development Rebuild",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"OverCooked",
+					"LinuxArm64",
+					"Development",
+					"/media/sebastian/TOSHIBA EXT/MSI_Laptop/Overcooked_Unreal/OverCooked.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"dependsOn": [
+					"OverCooked LinuxArm64 Development Clean"
+				],
+				"type": "shell",
+				"options": {
+					"cwd": "/home/sebastian/Documents/Unreal Engine 5.4"
+				}
+			},
+			{
+				"label": "OverCooked LinuxArm64 Development Clean",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"OverCooked",
+					"LinuxArm64",
+					"Development",
+					"/media/sebastian/TOSHIBA EXT/MSI_Laptop/Overcooked_Unreal/OverCooked.uproject",
+					"-waitmutex",
+					"-clean"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/sebastian/Documents/Unreal Engine 5.4"
+				}
+			},
+			{
+				"label": "OverCooked LinuxArm64 Test Build",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"OverCooked",
+					"LinuxArm64",
+					"Test",
+					"/media/sebastian/TOSHIBA EXT/MSI_Laptop/Overcooked_Unreal/OverCooked.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/sebastian/Documents/Unreal Engine 5.4"
+				}
+			},
+			{
+				"label": "OverCooked LinuxArm64 Test Rebuild",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"OverCooked",
+					"LinuxArm64",
+					"Test",
+					"/media/sebastian/TOSHIBA EXT/MSI_Laptop/Overcooked_Unreal/OverCooked.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"dependsOn": [
+					"OverCooked LinuxArm64 Test Clean"
+				],
+				"type": "shell",
+				"options": {
+					"cwd": "/home/sebastian/Documents/Unreal Engine 5.4"
+				}
+			},
+			{
+				"label": "OverCooked LinuxArm64 Test Clean",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"OverCooked",
+					"LinuxArm64",
+					"Test",
+					"/media/sebastian/TOSHIBA EXT/MSI_Laptop/Overcooked_Unreal/OverCooked.uproject",
+					"-waitmutex",
+					"-clean"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/sebastian/Documents/Unreal Engine 5.4"
+				}
+			},
+			{
+				"label": "OverCooked LinuxArm64 Shipping Build",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"OverCooked",
+					"LinuxArm64",
+					"Shipping",
+					"/media/sebastian/TOSHIBA EXT/MSI_Laptop/Overcooked_Unreal/OverCooked.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/sebastian/Documents/Unreal Engine 5.4"
+				}
+			},
+			{
+				"label": "OverCooked LinuxArm64 Shipping Rebuild",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"OverCooked",
+					"LinuxArm64",
+					"Shipping",
+					"/media/sebastian/TOSHIBA EXT/MSI_Laptop/Overcooked_Unreal/OverCooked.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"dependsOn": [
+					"OverCooked LinuxArm64 Shipping Clean"
+				],
+				"type": "shell",
+				"options": {
+					"cwd": "/home/sebastian/Documents/Unreal Engine 5.4"
+				}
+			},
+			{
+				"label": "OverCooked LinuxArm64 Shipping Clean",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"OverCooked",
+					"LinuxArm64",
+					"Shipping",
+					"/media/sebastian/TOSHIBA EXT/MSI_Laptop/Overcooked_Unreal/OverCooked.uproject",
+					"-waitmutex",
+					"-clean"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/sebastian/Documents/Unreal Engine 5.4"
+				}
+			},
+			{
+				"label": "OverCookedEditor Linux Debug Build",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"OverCookedEditor",
+					"Linux",
+					"Debug",
+					"/media/sebastian/TOSHIBA EXT/MSI_Laptop/Overcooked_Unreal/OverCooked.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/sebastian/Documents/Unreal Engine 5.4"
+				}
+			},
+			{
+				"label": "OverCookedEditor Linux Debug Rebuild",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"OverCookedEditor",
+					"Linux",
+					"Debug",
+					"/media/sebastian/TOSHIBA EXT/MSI_Laptop/Overcooked_Unreal/OverCooked.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"dependsOn": [
+					"OverCookedEditor Linux Debug Clean"
+				],
+				"type": "shell",
+				"options": {
+					"cwd": "/home/sebastian/Documents/Unreal Engine 5.4"
+				}
+			},
+			{
+				"label": "OverCookedEditor Linux Debug Clean",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"OverCookedEditor",
+					"Linux",
+					"Debug",
+					"/media/sebastian/TOSHIBA EXT/MSI_Laptop/Overcooked_Unreal/OverCooked.uproject",
+					"-waitmutex",
+					"-clean"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/sebastian/Documents/Unreal Engine 5.4"
+				}
+			},
+			{
+				"label": "OverCookedEditor Linux DebugGame Build",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"OverCookedEditor",
+					"Linux",
+					"DebugGame",
+					"/media/sebastian/TOSHIBA EXT/MSI_Laptop/Overcooked_Unreal/OverCooked.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/sebastian/Documents/Unreal Engine 5.4"
+				}
+			},
+			{
+				"label": "OverCookedEditor Linux DebugGame Rebuild",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"OverCookedEditor",
+					"Linux",
+					"DebugGame",
+					"/media/sebastian/TOSHIBA EXT/MSI_Laptop/Overcooked_Unreal/OverCooked.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"dependsOn": [
+					"OverCookedEditor Linux DebugGame Clean"
+				],
+				"type": "shell",
+				"options": {
+					"cwd": "/home/sebastian/Documents/Unreal Engine 5.4"
+				}
+			},
+			{
+				"label": "OverCookedEditor Linux DebugGame Clean",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"OverCookedEditor",
+					"Linux",
+					"DebugGame",
+					"/media/sebastian/TOSHIBA EXT/MSI_Laptop/Overcooked_Unreal/OverCooked.uproject",
+					"-waitmutex",
+					"-clean"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/sebastian/Documents/Unreal Engine 5.4"
+				}
+			},
+			{
+				"label": "OverCookedEditor Linux Development Build",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"OverCookedEditor",
+					"Linux",
+					"Development",
+					"/media/sebastian/TOSHIBA EXT/MSI_Laptop/Overcooked_Unreal/OverCooked.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/sebastian/Documents/Unreal Engine 5.4"
+				}
+			},
+			{
+				"label": "OverCookedEditor Linux Development Rebuild",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"OverCookedEditor",
+					"Linux",
+					"Development",
+					"/media/sebastian/TOSHIBA EXT/MSI_Laptop/Overcooked_Unreal/OverCooked.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"dependsOn": [
+					"OverCookedEditor Linux Development Clean"
+				],
+				"type": "shell",
+				"options": {
+					"cwd": "/home/sebastian/Documents/Unreal Engine 5.4"
+				}
+			},
+			{
+				"label": "OverCookedEditor Linux Development Clean",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"OverCookedEditor",
+					"Linux",
+					"Development",
+					"/media/sebastian/TOSHIBA EXT/MSI_Laptop/Overcooked_Unreal/OverCooked.uproject",
+					"-waitmutex",
+					"-clean"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/sebastian/Documents/Unreal Engine 5.4"
+				}
+			}
+		]
+	},
+	"launch": {
+		"version": "0.2.0",
+		"configurations": [
+			{
+				"name": "Launch OverCooked (Debug)",
+				"request": "launch",
+				"program": "/media/sebastian/TOSHIBA EXT/MSI_Laptop/Overcooked_Unreal/Binaries/Linux/UnrealGame-Linux-Debug",
+				"preLaunchTask": "OverCooked Linux Debug Build",
+				"args": [
+				],
+				"cwd": "/home/sebastian/Documents/Unreal Engine 5.4",
+				"type": "cppdbg",
+				"visualizerFile": "/home/sebastian/Documents/Unreal Engine 5.4/Engine/Extras/VisualStudioDebugging/Unreal.natvis",
+				"showDisplayString": true
+			},
+			{
+				"name": "Launch OverCooked (DebugGame)",
+				"request": "launch",
+				"program": "/media/sebastian/TOSHIBA EXT/MSI_Laptop/Overcooked_Unreal/Binaries/Linux/UnrealGame-Linux-DebugGame",
+				"preLaunchTask": "OverCooked Linux DebugGame Build",
+				"args": [
+				],
+				"cwd": "/home/sebastian/Documents/Unreal Engine 5.4",
+				"type": "cppdbg",
+				"visualizerFile": "/home/sebastian/Documents/Unreal Engine 5.4/Engine/Extras/VisualStudioDebugging/Unreal.natvis",
+				"showDisplayString": true
+			},
+			{
+				"name": "Launch OverCooked (Development)",
+				"request": "launch",
+				"program": "/media/sebastian/TOSHIBA EXT/MSI_Laptop/Overcooked_Unreal/Binaries/Linux/UnrealGame",
+				"preLaunchTask": "OverCooked Linux Development Build",
+				"args": [
+				],
+				"cwd": "/home/sebastian/Documents/Unreal Engine 5.4",
+				"type": "cppdbg",
+				"visualizerFile": "/home/sebastian/Documents/Unreal Engine 5.4/Engine/Extras/VisualStudioDebugging/Unreal.natvis",
+				"showDisplayString": true
+			},
+			{
+				"name": "Launch OverCooked (Test)",
+				"request": "launch",
+				"program": "/media/sebastian/TOSHIBA EXT/MSI_Laptop/Overcooked_Unreal/Binaries/Linux/UnrealGame-Linux-Test",
+				"preLaunchTask": "OverCooked Linux Test Build",
+				"args": [
+				],
+				"cwd": "/home/sebastian/Documents/Unreal Engine 5.4",
+				"type": "cppdbg",
+				"visualizerFile": "/home/sebastian/Documents/Unreal Engine 5.4/Engine/Extras/VisualStudioDebugging/Unreal.natvis",
+				"showDisplayString": true
+			},
+			{
+				"name": "Launch OverCooked (Shipping)",
+				"request": "launch",
+				"program": "/media/sebastian/TOSHIBA EXT/MSI_Laptop/Overcooked_Unreal/Binaries/Linux/UnrealGame-Linux-Shipping",
+				"preLaunchTask": "OverCooked Linux Shipping Build",
+				"args": [
+				],
+				"cwd": "/home/sebastian/Documents/Unreal Engine 5.4",
+				"type": "cppdbg",
+				"visualizerFile": "/home/sebastian/Documents/Unreal Engine 5.4/Engine/Extras/VisualStudioDebugging/Unreal.natvis",
+				"showDisplayString": true
+			},
+			{
+				"name": "Launch OverCookedEditor (Debug)",
+				"request": "launch",
+				"program": "/home/sebastian/Documents/Unreal Engine 5.4/Engine/Binaries/Linux/UnrealEditor-Linux-Debug",
+				"preLaunchTask": "OverCookedEditor Linux Debug Build",
+				"args": [
+					"/media/sebastian/TOSHIBA EXT/MSI_Laptop/Overcooked_Unreal/OverCooked.uproject"
+				],
+				"cwd": "/home/sebastian/Documents/Unreal Engine 5.4",
+				"type": "cppdbg",
+				"visualizerFile": "/home/sebastian/Documents/Unreal Engine 5.4/Engine/Extras/VisualStudioDebugging/Unreal.natvis",
+				"showDisplayString": true
+			},
+			{
+				"name": "Launch OverCookedEditor (DebugGame)",
+				"request": "launch",
+				"program": "/home/sebastian/Documents/Unreal Engine 5.4/Engine/Binaries/Linux/UnrealEditor-Linux-DebugGame",
+				"preLaunchTask": "OverCookedEditor Linux DebugGame Build",
+				"args": [
+					"/media/sebastian/TOSHIBA EXT/MSI_Laptop/Overcooked_Unreal/OverCooked.uproject"
+				],
+				"cwd": "/home/sebastian/Documents/Unreal Engine 5.4",
+				"type": "cppdbg",
+				"visualizerFile": "/home/sebastian/Documents/Unreal Engine 5.4/Engine/Extras/VisualStudioDebugging/Unreal.natvis",
+				"showDisplayString": true
+			},
+			{
+				"name": "Launch OverCookedEditor (Development)",
+				"request": "launch",
+				"program": "/home/sebastian/Documents/Unreal Engine 5.4/Engine/Binaries/Linux/UnrealEditor",
+				"preLaunchTask": "OverCookedEditor Linux Development Build",
+				"args": [
+					"/media/sebastian/TOSHIBA EXT/MSI_Laptop/Overcooked_Unreal/OverCooked.uproject"
+				],
+				"cwd": "/home/sebastian/Documents/Unreal Engine 5.4",
+				"type": "cppdbg",
+				"visualizerFile": "/home/sebastian/Documents/Unreal Engine 5.4/Engine/Extras/VisualStudioDebugging/Unreal.natvis",
+				"showDisplayString": true
+			},
+			{
+				"name": "Generate Project Files",
+				"type": "coreclr",
+				"request": "launch",
+				"preLaunchTask": "UnrealBuildTool Linux Development Build",
+				"program": "/home/sebastian/Documents/Unreal Engine 5.4/Engine/Build/BatchFiles/RunUBT.bat",
+				"args": [
+					"-projectfiles",
+					"-vscode",
+					"-project=/media/sebastian/TOSHIBA EXT/MSI_Laptop/Overcooked_Unreal/OverCooked.uproject",
+					"-game",
+					"-engine",
+					"-dotnet"
+				],
+				"console": "internalConsole",
+				"internalConsoleOptions": "openOnSessionStart",
+				"stopAtEntry": false,
+				"cwd": "/home/sebastian/Documents/Unreal Engine 5.4"
+			}
+		]
+	}
+}
