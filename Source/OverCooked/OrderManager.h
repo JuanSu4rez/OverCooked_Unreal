@@ -5,9 +5,16 @@
 #include <list>
 
 #include "CoreMinimal.h"
+#include "EDishes.h"
 #include "GameFramework/Actor.h"
+#include "Delegates//DelegateCombinations.h"
+
 #include "OrderManager.generated.h"
 
+// // Delegate for broadcasting order events
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnOrderCreated, EDishes, NewOrder);
+// DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnOrderCompleted);
+// DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnOrderChecked, bool, bIsOrderCorrect);
 
 UCLASS()
 class OVERCOOKED_API AOrderManager : public AActor
@@ -23,15 +30,35 @@ protected:
 	virtual void BeginPlay() override;
 
 public:	
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Order Manager")
+	TArray<EDishes> Dishes;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Order Manager")
+	float OrderSpawnInterval;	
+
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-	UFUNCTION(BlueprintCallable)
+	UFUNCTION(BlueprintCallable, Category = "Order Manager")
 	void SpawnOrder();
 
 	UFUNCTION(BlueprintCallable)
-	bool CheckOrder(const TArray<AActor*>& DeliveredIngredients);
-
+	bool CheckOrder(const TArray<AActor*>& DeliveredIngredients);	
+		
+	// Event Dispatcher for when a new order is created
+	UPROPERTY(BlueprintAssignable, Category = "Order Events")
+	FOnOrderCreated OnOrderCreated;
+	
+	// Event Dispatcher for when an order is completed
+	// UPROPERTY(BlueprintAssignable, Category = "Order Events")
+	// FOnOrderCompleted OnOrderCompleted;
+	
+	// Event Dispatcher for order checking (used internally)
+	// UPROPERTY(BlueprintAssignable, Category = "Order Events")
+	// FOnOrderChecked OnOrderChecked;
+	
 private:
-	TQueue<AActor*> OrderQueue;
+	TQueue<AActor*> OrdersQueue;
+	float LastOrderSpawnedAt = {0};
 };
