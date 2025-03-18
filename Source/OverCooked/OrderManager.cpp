@@ -13,7 +13,7 @@ AOrderManager::AOrderManager()
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
-	Dishes = {EDishes::SimpleBurger, EDishes::CheeseBurger, EDishes::CompleteBurger, EDishes::Salad};
+	AvailableDishes = {EDishes::SimpleBurger, EDishes::CheeseBurger, EDishes::CompleteBurger, EDishes::Salad};
 	
 }
 
@@ -21,7 +21,7 @@ AOrderManager::AOrderManager()
 void AOrderManager::BeginPlay()
 {
 	Super::BeginPlay();
-	UE_LOG(LogTemp, Warning, TEXT("BeginPlay -> Dishes count: %d"), Dishes.Num());
+	UE_LOG(LogTemp, Warning, TEXT("BeginPlay -> Dishes count: %d"), AvailableDishes.Num());
 }
 
 // Called every frame
@@ -36,21 +36,25 @@ void AOrderManager::Tick(float DeltaTime)
 
 void AOrderManager::SpawnOrder()
 {		
-	if (Dishes.Num() == 0) 
+	if (AvailableDishes.Num() == 0) 
 	{
 		UE_LOG(LogTemp, Warning, TEXT("No dishes available to spawn!"));
 		return;
 	}	
 	
-	int32 RandomIndex = FMath::RandRange(0, Dishes.Num() - 1);	
-	EDishes RandomDish = Dishes[RandomIndex];
+	int32 RandomIndex = FMath::RandRange(0, AvailableDishes.Num() - 1);	
+	EDishes RandomDish = AvailableDishes[RandomIndex];
 
 	FText DishNameText = UEnum::GetDisplayValueAsText(RandomDish);
 		
 	UE_LOG(LogTemp, Warning, TEXT("SPAWNING ORDER: %s"), *DishNameText.ToString());
 
+	OrdersQueue.Add(RandomDish);
+
 	// Trigger the event with the randomly selected dish
-	OnOrderCreated.Broadcast(RandomDish);
+	OnOrderCreated.Broadcast(OrdersQueue);
+	UE_LOG(LogTemp, Warning, TEXT("Broadcasting Order: %s"), *UEnum::GetDisplayValueAsText(RandomDish).ToString());
+
 }
 
 

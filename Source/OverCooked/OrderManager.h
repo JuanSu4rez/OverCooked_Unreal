@@ -12,7 +12,7 @@
 #include "OrderManager.generated.h"
 
 // // Delegate for broadcasting order events
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnOrderCreated, EDishes, NewOrder);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnOrderCreated, const TArray<EDishes>&, OrdersQueue);
 // DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnOrderCompleted);
 // DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnOrderChecked, bool, bIsOrderCorrect);
 
@@ -32,7 +32,7 @@ protected:
 public:	
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Order Manager")
-	TArray<EDishes> Dishes;
+	TArray<EDishes> AvailableDishes;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Order Manager")
 	float OrderSpawnInterval;	
@@ -59,6 +59,6 @@ public:
 	// FOnOrderChecked OnOrderChecked;
 	
 private:
-	TQueue<AActor*> OrdersQueue;
+	TArray<EDishes> OrdersQueue;
 	float LastOrderSpawnedAt = {0};
 };
