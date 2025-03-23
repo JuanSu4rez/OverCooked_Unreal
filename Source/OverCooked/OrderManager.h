@@ -59,6 +59,6 @@ public:
 	// FOnOrderChecked OnOrderChecked;
 	
 private:
-	TArray<EDishes> OrdersQueue;
+	TArray<EDishes> OrdersQueue = {};
 	float LastOrderSpawnedAt = {0};
 };

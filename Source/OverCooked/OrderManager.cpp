@@ -42,19 +42,26 @@ void AOrderManager::SpawnOrder()
 		return;
 	}	
 	
-	int32 RandomIndex = FMath::RandRange(0, AvailableDishes.Num() - 1);	
-	EDishes RandomDish = AvailableDishes[RandomIndex];
+	if (OrdersQueue.Num() < 5)
+	{
+		int32 RandomIndex = FMath::RandRange(0, AvailableDishes.Num() - 1);	
+		EDishes RandomDish = AvailableDishes[RandomIndex];
 
-	FText DishNameText = UEnum::GetDisplayValueAsText(RandomDish);
+		FText DishNameText = UEnum::GetDisplayValueAsText(RandomDish);
 		
-	UE_LOG(LogTemp, Warning, TEXT("SPAWNING ORDER: %s"), *DishNameText.ToString());
+		UE_LOG(LogTemp, Warning, TEXT("SPAWNING ORDER: %s"), *DishNameText.ToString());
 
-	OrdersQueue.Add(RandomDish);
+		OrdersQueue.Push(RandomDish);
 
-	// Trigger the event with the randomly selected dish
-	OnOrderCreated.Broadcast(OrdersQueue);
-	UE_LOG(LogTemp, Warning, TEXT("Broadcasting Order: %s"), *UEnum::GetDisplayValueAsText(RandomDish).ToString());
+		// for (auto Element : OrdersQueue)
+		// {
+		// 	UE_LOG(LogTemp, Warning, TEXT("Order in queue: %s"), *UEnum::GetDisplayValueAsText(Element).ToString());
+		// }
 
+		// Trigger the event with the randomly selected dish
+		OnOrderCreated.Broadcast(OrdersQueue);
+		UE_LOG(LogTemp, Warning, TEXT("Broadcasting Order: %s"), *UEnum::GetDisplayValueAsText(RandomDish).ToString());
+	}
 }
 
 
