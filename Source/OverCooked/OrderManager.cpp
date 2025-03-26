@@ -49,9 +49,15 @@ void AOrderManager::SpawnOrder()
 
 		FText DishNameText = UEnum::GetDisplayValueAsText(RandomDish);
 		
-		UE_LOG(LogTemp, Warning, TEXT("SPAWNING ORDER: %s"), *DishNameText.ToString());
+		// UE_LOG(LogTemp, Warning, TEXT("SPAWNING ORDER: %s"), *DishNameText.ToString());
 
 		OrdersQueue.Push(RandomDish);
+
+		UE_LOG(LogTemp, Warning, TEXT("-------ORDERS IN QUEUE----------"));
+		for (auto Order : OrdersQueue)
+		{
+			UE_LOG(LogTemp, Warning, TEXT("Order in queue: %s"), *UEnum::GetDisplayValueAsText(Order).ToString());
+		}
 
 		// for (auto Element : OrdersQueue)
 		// {
