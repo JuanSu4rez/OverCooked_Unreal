@@ -22,6 +22,17 @@ void AOrderManager::BeginPlay()
 {
 	Super::BeginPlay();
 	UE_LOG(LogTemp, Warning, TEXT("BeginPlay -> Dishes count: %d"), AvailableDishes.Num());
+	SpawnInitialOrders();
+}
+
+void AOrderManager::SpawnInitialOrders()
+{
+	FTimerHandle TimerHandle;
+	GetWorld()->GetTimerManager().SetTimer(TimerHandle, [this]()
+	{
+		for (int i = 0; i < 2; i++)		
+			SpawnOrder();		
+	}, 2.0f, false);
 }
 
 // Called every frame
@@ -74,7 +85,6 @@ void AOrderManager::SpawnOrder()
 
 bool AOrderManager::CheckOrder(const TArray<AActor*>& DeliveredIngredients)
 {
-	UE_LOG(LogTemp, Warning, TEXT("Checking order"));
-	// OnOrderCreated.Broadcast(EDishes::Burger);
+	UE_LOG(LogTemp, Warning, TEXT("Checking order FROM C++"));	
 	return true;
 }

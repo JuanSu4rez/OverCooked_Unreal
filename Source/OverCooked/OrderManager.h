@@ -61,4 +61,5 @@ public:
 private:
 	TArray<EDishes> OrdersQueue = {};
 	float LastOrderSpawnedAt = {0};
+	void SpawnInitialOrders();
 };
