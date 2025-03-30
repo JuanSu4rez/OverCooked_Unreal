@@ -7,7 +7,7 @@
 #include "CoreMinimal.h"
 #include "EDishes.h"
 #include "GameFramework/Actor.h"
-#include "Delegates//DelegateCombinations.h"
+#include "Engine/DataTable.h"
 
 #include "OrderManager.generated.h"
 
@@ -30,6 +30,9 @@ protected:
 	virtual void BeginPlay() override;
 
 public:	
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Data")
+	UDataTable* OrderDataTable;
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Order Manager")
 	TArray<EDishes> AvailableDishes;
@@ -43,8 +46,8 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Order Manager")
 	void SpawnOrder();
 
-	UFUNCTION(BlueprintCallable)
-	bool CheckOrder(const TArray<AActor*>& DeliveredIngredients);	
+	UFUNCTION(BlueprintCallable, Category = "Order Manager")
+	bool CheckOrder(const TArray<AActor*>& DeliveredIngredients);
 		
 	// Event Dispatcher for when a new order is created
 	UPROPERTY(BlueprintAssignable, Category = "Order Events")

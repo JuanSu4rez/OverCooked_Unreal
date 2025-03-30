@@ -81,10 +81,13 @@ void AOrderManager::SpawnOrder()
 	}
 }
 
-
-
 bool AOrderManager::CheckOrder(const TArray<AActor*>& DeliveredIngredients)
 {
-	UE_LOG(LogTemp, Warning, TEXT("Checking order FROM C++"));	
+	UE_LOG(LogTemp, Warning, TEXT("Checking order FROM C++"));
+	if (DeliveredIngredients.Num() == 0)
+		return false;
+	
+	
 	return true;
 }
+
