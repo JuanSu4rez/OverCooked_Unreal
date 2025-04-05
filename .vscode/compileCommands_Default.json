@@ -1,5 +1,37 @@
 [
 	{
+		"file": "/media/sebastian/TOSHIBA EXT/MSI_Laptop/Overcooked_Unreal/Source/OverCooked/EDishes.cpp",
+		"arguments": [
+			"/home/sebastian/Documents/Unreal Engine 5.4/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v22_clang-16.0.6-centos7/x86_64-unknown-linux-gnu/bin/clang++",
+			"@/media/sebastian/TOSHIBA EXT/MSI_Laptop/Overcooked_Unreal/.vscode/compileCommands_Default/OverCooked.1.rsp"
+		],
+		"directory": "/home/sebastian/Documents/Unreal Engine 5.4/Engine/Source"
+	},
+	{
+		"file": "/media/sebastian/TOSHIBA EXT/MSI_Laptop/Overcooked_Unreal/Source/OverCooked/EDishes.h",
+		"arguments": [
+			"/home/sebastian/Documents/Unreal Engine 5.4/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v22_clang-16.0.6-centos7/x86_64-unknown-linux-gnu/bin/clang++",
+			"@/media/sebastian/TOSHIBA EXT/MSI_Laptop/Overcooked_Unreal/.vscode/compileCommands_Default/OverCooked.1.rsp"
+		],
+		"directory": "/home/sebastian/Documents/Unreal Engine 5.4/Engine/Source"
+	},
+	{
+		"file": "/media/sebastian/TOSHIBA EXT/MSI_Laptop/Overcooked_Unreal/Source/OverCooked/OrderData.cpp",
+		"arguments": [
+			"/home/sebastian/Documents/Unreal Engine 5.4/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v22_clang-16.0.6-centos7/x86_64-unknown-linux-gnu/bin/clang++",
+			"@/media/sebastian/TOSHIBA EXT/MSI_Laptop/Overcooked_Unreal/.vscode/compileCommands_Default/OverCooked.1.rsp"
+		],
+		"directory": "/home/sebastian/Documents/Unreal Engine 5.4/Engine/Source"
+	},
+	{
+		"file": "/media/sebastian/TOSHIBA EXT/MSI_Laptop/Overcooked_Unreal/Source/OverCooked/OrderData.h",
+		"arguments": [
+			"/home/sebastian/Documents/Unreal Engine 5.4/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v22_clang-16.0.6-centos7/x86_64-unknown-linux-gnu/bin/clang++",
+			"@/media/sebastian/TOSHIBA EXT/MSI_Laptop/Overcooked_Unreal/.vscode/compileCommands_Default/OverCooked.1.rsp"
+		],
+		"directory": "/home/sebastian/Documents/Unreal Engine 5.4/Engine/Source"
+	},
+	{
 		"file": "/media/sebastian/TOSHIBA EXT/MSI_Laptop/Overcooked_Unreal/Source/OverCooked/OrderManager.cpp",
 		"arguments": [
 			"/home/sebastian/Documents/Unreal Engine 5.4/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v22_clang-16.0.6-centos7/x86_64-unknown-linux-gnu/bin/clang++",

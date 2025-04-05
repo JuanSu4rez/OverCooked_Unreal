@@ -9,11 +9,12 @@
 #include "GameFramework/Actor.h"
 #include "Engine/DataTable.h"
 
+
 #include "OrderManager.generated.h"
 
 // // Delegate for broadcasting order events
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnOrderCreated, const TArray<EDishes>&, OrdersQueue);
-// DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnOrderCompleted);
+// DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnOrderCompleted, int orderIndex, orderIndex);
 // DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnOrderChecked, bool, bIsOrderCorrect);
 
 UCLASS()
