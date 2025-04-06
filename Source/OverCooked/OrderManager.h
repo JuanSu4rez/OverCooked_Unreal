@@ -14,7 +14,8 @@
 
 // // Delegate for broadcasting order events
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnOrderCreated, const TArray<EDishes>&, OrdersQueue);
-// DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnOrderCompleted, int orderIndex, orderIndex);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnOrderCompleted, int, orderIndex);
+
 // DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnOrderChecked, bool, bIsOrderCorrect);
 
 UCLASS()
@@ -48,15 +49,15 @@ public:
 	void SpawnOrder();
 
 	UFUNCTION(BlueprintCallable, Category = "Order Manager")
-	bool CheckOrder(const TArray<AActor*>& DeliveredIngredients);
+	int CheckOrder(const TArray<AActor*>& DeliveredIngredients);
 		
 	// Event Dispatcher for when a new order is created
 	UPROPERTY(BlueprintAssignable, Category = "Order Events")
 	FOnOrderCreated OnOrderCreated;
 	
 	// Event Dispatcher for when an order is completed
-	// UPROPERTY(BlueprintAssignable, Category = "Order Events")
-	// FOnOrderCompleted OnOrderCompleted;
+	UPROPERTY(BlueprintAssignable, Category = "Order Events")
+	FOnOrderCompleted OnOrderCompleted;
 	
 	// Event Dispatcher for order checking (used internally)
 	// UPROPERTY(BlueprintAssignable, Category = "Order Events")

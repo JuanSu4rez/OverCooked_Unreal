@@ -82,19 +82,19 @@ void AOrderManager::SpawnOrder()
 	}
 }
 
-bool AOrderManager::CheckOrder(const TArray<AActor*>& DeliveredIngredients)
+int AOrderManager::CheckOrder(const TArray<AActor*>& DeliveredIngredients)
 {
     // UE_LOG(LogTemp, Display, TEXT("=== ORDER CHECK STARTED ==="));
     if (DeliveredIngredients.IsEmpty())
     {
         // UE_LOG(LogTemp, Warning, TEXT("No ingredients delivered!"));
-        return false;
+        return -1;
     }
     
     if (!OrderDataTable)
     {
         UE_LOG(LogTemp, Error, TEXT("❌ OrdersDataTable is NOT assigned in the Editor!"));
-        return false;
+        return -1;
     }
 
     // Print all delivered ingredients
@@ -138,8 +138,9 @@ bool AOrderManager::CheckOrder(const TArray<AActor*>& DeliveredIngredients)
 		if (bAllIngredientsMatch)
 		{
 			UE_LOG(LogTemp, Display, TEXT("✅ CORRECT ORDER MATCH, remove from queue: %s, index: %d"), *OrderName.ToString(), index);
-			OrdersQueue.RemoveAt(index);
-			return true;
+			// OrdersQueue.RemoveAt(index);
+			// OnOrderCompleted.Broadcast(index);
+			return index;
 		}
 		
 	}
@@ -198,5 +199,5 @@ bool AOrderManager::CheckOrder(const TArray<AActor*>& DeliveredIngredients)
     // }
 
     UE_LOG(LogTemp, Warning, TEXT("=== NO MATCHING ORDER FOUND ==="));
-    return false;
+    return -1;
 }
