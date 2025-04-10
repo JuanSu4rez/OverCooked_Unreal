@@ -139,7 +139,6 @@ int AOrderManager::CheckOrder(const TArray<AActor*>& DeliveredIngredients)
 		{
 			UE_LOG(LogTemp, Display, TEXT("✅ CORRECT ORDER MATCH, remove from queue: %s, index: %d"), *OrderName.ToString(), index);
 			OrdersQueue.RemoveAt(index);			
-			// OnOrderCompleted.Broadcast(index);
 			return index;
 		}
 		
@@ -200,4 +199,9 @@ int AOrderManager::CheckOrder(const TArray<AActor*>& DeliveredIngredients)
 
     UE_LOG(LogTemp, Warning, TEXT("=== NO MATCHING ORDER FOUND ==="));
     return -1;
+}
+
+void AOrderManager::RemoveOrderExpired()
+{
+	OrdersQueue.RemoveAt(0);	
 }

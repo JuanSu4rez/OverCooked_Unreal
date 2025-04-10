@@ -62,6 +62,9 @@ public:
 	// Event Dispatcher for order checking (used internally)
 	// UPROPERTY(BlueprintAssignable, Category = "Order Events")
 	// FOnOrderChecked OnOrderChecked;
+
+	UFUNCTION(BlueprintCallable, Category = "Order Manager")
+	void RemoveOrderExpired();
 	
 private:
 	TArray<EDishes> OrdersQueue = {};
