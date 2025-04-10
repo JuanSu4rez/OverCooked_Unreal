@@ -138,8 +138,8 @@ int AOrderManager::CheckOrder(const TArray<AActor*>& DeliveredIngredients)
 		if (bAllIngredientsMatch)
 		{
 			UE_LOG(LogTemp, Display, TEXT("✅ CORRECT ORDER MATCH, remove from queue: %s, index: %d"), *OrderName.ToString(), index);
-			OrdersQueue.RemoveAt(index);
-			OnOrderCompleted.Broadcast(index);
+			OrdersQueue.RemoveAt(index);			
+			// OnOrderCompleted.Broadcast(index);
 			return index;
 		}
 		
