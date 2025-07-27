@@ -4,30 +4,20 @@
 #include "EPatrolPointType.h"
 #include "NavigationPoint.generated.h"
 
-USTRUCT(BlueprintType)
-struct OVERCOOKED_API FNavigationPoint
+
+UCLASS(BlueprintType)
+class OVERCOOKED_API ANavigationPoint: public AActor
 {
 	GENERATED_BODY()
 
-	FNavigationPoint()
-	   : Location(FVector::ZeroVector)
-	   , Type(EPatrolPointType::Extreme) {}
-
-	FNavigationPoint(FVector Location, EPatrolPointType Type)
-		: Location(Location), Type(Type){}
-	
-	// Point in space (x,y)
-		UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		FVector Location;
+public: 
+	ANavigationPoint();
+	virtual void BeginPlay() override;
 
 	// Intersection or Extreme (Extreme will be the start of the path)
-		UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		EPatrolPointType Type;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	EPatrolPointType Type;
 
-		bool IsExtreme() const
-		{
-			return Type == EPatrolPointType::Extreme;
-		}
+	UFUNCTION(BlueprintCallable)
+	bool IsExtreme();
 };
-
-
