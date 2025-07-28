@@ -1,6 +1,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "NPCPathFinder.h"
 #include "NavigationPoint.h"
 #include "GameFramework/Actor.h"
 #include "NPCsManager.generated.h"
@@ -13,7 +14,12 @@ class OVERCOOKED_API ANPCsManager : public AActor
 
 public:
 
-	ANPCsManager();	
+	ANPCsManager();
+	virtual void BeginPlay() override;
+
+
+	UPROPERTY()
+	UNPCPathFinder* PathFinder;
 
 	//EditAnywhere -> writable
 	//VisibleAnywhere -> read-only
@@ -32,15 +38,9 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "NPCs Management")
 	void SetNPCTarget(ACharacter* NPC, const FVector& TargetLocation);
 
-	UFUNCTION(BlueprintCallable, Category = "NPCs Management")
-	TArray<AActor*> FindNPCSpawnPoints();
-	
-
 private:
 	
-	UFUNCTION(BlueprintCallable, Category = "NPCs Management")
-	TArray<AActor*> FindAllNavigationPoints();
-
-	UFUNCTION(BlueprintCallable, Category = "NPCs Management")
+	UFUNCTION(BlueprintCallable, Category = "NPCs Management")	
 	ANavigationPoint* GetRandomSpawningPoint();
+	
 };

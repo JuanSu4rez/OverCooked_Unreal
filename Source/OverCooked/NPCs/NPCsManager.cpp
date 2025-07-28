@@ -12,6 +12,15 @@ ANPCsManager::ANPCsManager()
 	CurrentNPCCount = 0;	
 }
 
+void ANPCsManager::BeginPlay()
+{
+	Super::BeginPlay();
+
+	PathFinder = NewObject<UNPCPathFinder>(this);
+	auto result = PathFinder->FindNPCSpawnPoints();	
+	
+}
+
 void ANPCsManager::CreateNPC()
 {
 	if (NPCUnityType)
@@ -60,34 +69,9 @@ void ANPCsManager::SetNPCTarget(ACharacter* NPC, const FVector& TargetLocation)
 	}
 }
 
-TArray<AActor*> ANPCsManager::FindNPCSpawnPoints()
-{
-	TArray<AActor*> allNavigationPoints;
-	UGameplayStatics::GetAllActorsOfClass(GetWorld(), ANavigationPoint::StaticClass(), allNavigationPoints);
-
-	TArray<AActor*> allExtremes;
-	for (AActor* Actor : allNavigationPoints)
-	{
-		ANavigationPoint* Point = Cast<ANavigationPoint>(Actor);
-		if (Point && Point->IsExtreme())  // Using your IsExtreme() function
-		{
-			allExtremes.Add(Point);
-		}
-	}
-	return allExtremes;
-}
-
-TArray<AActor*> ANPCsManager::FindAllNavigationPoints()
-{
-	TArray<AActor*> allNavigationPoints;
-	UGameplayStatics::GetAllActorsOfClass(GetWorld(), ANavigationPoint::StaticClass(), allNavigationPoints);
-
-	return allNavigationPoints;
-}
-
 ANavigationPoint* ANPCsManager::GetRandomSpawningPoint()
 {
-	TArray<AActor*> spawningPoints = FindNPCSpawnPoints();
+	TArray<AActor*> spawningPoints = PathFinder->FindNPCSpawnPoints();
 	return Cast<ANavigationPoint>(spawningPoints[FMath::RandRange(0, spawningPoints.Num() - 1)]);	
 }
 
