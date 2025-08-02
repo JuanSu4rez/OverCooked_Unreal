@@ -36,11 +36,13 @@ public:
 	void CreateNPC();
 
 	UFUNCTION(BlueprintCallable, Category = "NPCs Management")
+	void AddPathToNPC(ACharacter* npcCharacter, TArray<AActor*> npcPath);
+
+	UFUNCTION(BlueprintCallable, Category = "NPCs Management")
 	void SetNPCTarget(ACharacter* NPC, const FVector& TargetLocation);
 
 private:
 	
-	UFUNCTION(BlueprintCallable, Category = "NPCs Management")	
-	ANavigationPoint* GetRandomSpawningPoint();
+
 	
 };

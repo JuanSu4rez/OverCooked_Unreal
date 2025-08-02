@@ -25,7 +25,7 @@ void ANavigationPoint::BeginPlay()
 	);
 }
 
-bool ANavigationPoint::IsExtreme()
+bool ANavigationPoint::IsExtreme() const
 {	
    	return Type == EPatrolPointType::Extreme;   
 }
