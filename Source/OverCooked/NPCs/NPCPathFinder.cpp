@@ -58,7 +58,7 @@ TArray<AActor*> UNPCPathFinder::GetNavigationPath(AActor* StartPoint) const
 }
 
 /*
- * Calculates the final point for the NPC Path, selecting randomly between the 2 best choices
+ * Calculates the final point for the NPC Path, selecting randomly between the 2 best choices:
  * Either retrieves a point to complete a straight path end to end
  * Or retrieves a point to generate an L-Shaped path
  */
@@ -91,8 +91,8 @@ AActor* UNPCPathFinder::GetRandomValidFinalPoint(const AActor* StartingPoint, co
 		}
 	}
 
-	TArray<AActor*> validExtremePoints = {ExtremePointStraightPath, ExtremePointLShapedPath};
-	return validExtremePoints[FMath::RandRange(0, validExtremePoints.Num() - 1)];
+	TArray<AActor*> ValidExtremePoints = {ExtremePointStraightPath, ExtremePointLShapedPath};
+	return ValidExtremePoints[FMath::RandRange(0, ValidExtremePoints.Num() - 1)];
 }
 
 

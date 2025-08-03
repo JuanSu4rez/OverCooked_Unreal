@@ -21,6 +21,9 @@ public:
 	UPROPERTY()
 	UNPCPathFinder* PathFinder;
 
+	UPROPERTY()
+	TArray<AActor*> Pedestrians;
+
 	//EditAnywhere -> writable
 	//VisibleAnywhere -> read-only
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "NPCs Management")

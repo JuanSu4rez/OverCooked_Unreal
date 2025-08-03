@@ -18,6 +18,8 @@ void ANPCsManager::BeginPlay()
 {
 	Super::BeginPlay();
 
+	Pedestrians = {};
+	
 	PathFinder = NewObject<UNPCPathFinder>(this);
 	auto result = PathFinder->GetExtremePoints();
 	CreateNPC();
