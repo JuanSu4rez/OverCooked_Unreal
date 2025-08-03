@@ -23,6 +23,26 @@ void ANPCsManager::BeginPlay()
 	PathFinder = NewObject<UNPCPathFinder>(this);
 	auto result = PathFinder->GetExtremePoints();
 	CreateNPC();
+
+	FTimerHandle NPCSpawnTimerHandle;
+	
+	// Proper timer setup for UE 5.4
+	GetWorld()->GetTimerManager().SetTimer(
+		NPCSpawnTimerHandle,  // Even if you don't plan to use it, the parameter is required
+		this,
+		&ANPCsManager::CheckAndSpawnNPC,
+		5.0f,    // Interval in seconds
+		true      // Loop
+	);
+}
+
+void ANPCsManager::CheckAndSpawnNPC()
+{
+	if (CurrentNPCCount < MaxNPCCount)
+	{
+		CreateNPC();
+		CurrentNPCCount++; // Ensure you increment this when spawning succeeds
+	}
 }
 
 void ANPCsManager::CreateNPC()
@@ -39,6 +59,7 @@ void ANPCsManager::CreateNPC()
 
 		FTransform SpawnTransform = FTransform(randomSpawningPoint->GetActorLocation());
 		AActor* SpawnedNPC = GetWorld()->SpawnActor<AActor>(NPCUnityType, SpawnTransform, SpawnParams);
+		
 		AddPathToNPC(Cast<ACharacter>(SpawnedNPC), PathFinder->GetNavigationPath(randomSpawningPoint));
 	}
 }
@@ -57,17 +78,9 @@ void ANPCsManager::AddPathToNPC(ACharacter* npcCharacter, TArray<AActor*> npcPat
 }
 
 
-void ANPCsManager::SetNPCTarget(ACharacter* NPC, const FVector& TargetLocation)
+void ANPCsManager::ResetNpcPath(AActor* NPC, AActor* InitialPoint)
 {
 	if (!NPC) return;
 
-	AAIController* AIController = Cast<AAIController>(NPC->GetController());
-	if (AIController)
-	{
-		AIController->MoveToLocation(TargetLocation);
-	}
-	else
-	{
-		UE_LOG(LogTemp, Error, TEXT("NPC has no AI Controller!"));
-	}
+	AddPathToNPC(Cast<ACharacter>(NPC), PathFinder->GetNavigationPath(InitialPoint));
 }

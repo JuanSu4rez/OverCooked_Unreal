@@ -5,6 +5,8 @@
 #include "NavigationPoint.h"
 #include "GameFramework/Actor.h"
 #include "NPCsManager.generated.h"
+// // Delegate for broadcasting npc events
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnNpcEvent, AActor*, Npc, AActor*, NavigationPoint);
 
 UCLASS(Blueprintable)
 class OVERCOOKED_API ANPCsManager : public AActor
@@ -16,6 +18,7 @@ public:
 
 	ANPCsManager();
 	virtual void BeginPlay() override;
+	void CheckAndSpawnNPC();
 
 
 	UPROPERTY()
@@ -35,6 +38,9 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "NPCs Management")
 	TSubclassOf<ACharacter> NPCUnityType;
 
+	UPROPERTY(BlueprintAssignable, Category = "NPCs Management Events")
+	FOnNpcEvent OnNavigationCompleted; 
+	
 	UFUNCTION(BlueprintCallable, Category = "NPCs Management")
 	void CreateNPC();
 
@@ -42,7 +48,7 @@ public:
 	void AddPathToNPC(ACharacter* npcCharacter, TArray<AActor*> npcPath);
 
 	UFUNCTION(BlueprintCallable, Category = "NPCs Management")
-	void SetNPCTarget(ACharacter* NPC, const FVector& TargetLocation);
+	void ResetNpcPath(AActor* NPC, AActor* InitialPoint);
 
 private:
 	
