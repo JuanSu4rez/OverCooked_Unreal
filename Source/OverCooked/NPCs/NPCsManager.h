@@ -47,6 +47,9 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "NPCs Management")
 	void AddPathToNPC(ACharacter* npcCharacter, TArray<AActor*> npcPath);
 
+	UFUNCTION()
+	void HandleNavigationCompleted(AActor* Npc, AActor* NavigationPoint);
+
 	UFUNCTION(BlueprintCallable, Category = "NPCs Management")
 	void ResetNpcPath(AActor* NPC, AActor* InitialPoint);
 

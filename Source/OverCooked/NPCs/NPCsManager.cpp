@@ -3,6 +3,7 @@
 #include "NavigationPoint.h"
 #include "NavigationSystem.h"
 #include "AIController.h"
+#include "BaseNPC.h"
 #include "UPedestrianControllerInterface.h"
 #include "GameFramework/Character.h"
 #include "Kismet/GameplayStatics.h"
@@ -17,6 +18,8 @@ ANPCsManager::ANPCsManager()
 void ANPCsManager::BeginPlay()
 {
 	Super::BeginPlay();
+
+	OnNavigationCompleted.AddDynamic(this, &ANPCsManager::HandleNavigationCompleted);
 
 	Pedestrians = {};
 	
@@ -50,15 +53,15 @@ void ANPCsManager::CreateNPC()
 	if (NPCUnityType)
 	{
 		auto randomSpawningPoint = PathFinder->GetRandomSpawningPoint();
-		auto bestIntersectionPoint = PathFinder-> GetBestIntersectionPoint(randomSpawningPoint);
+		// auto bestIntersectionPoint = PathFinder-> GetBestIntersectionPoint(randomSpawningPoint);
 
-		UE_LOG(LogTemp, Warning, TEXT("randomSpawningPoint :"), randomSpawningPoint->GetActorLocation());
-		UE_LOG(LogTemp, Warning, TEXT("bestIntersectionPoint :"), bestIntersectionPoint->GetActorLocation());
+		// UE_LOG(LogTemp, Warning, TEXT("randomSpawningPoint :"), randomSpawningPoint->GetActorLocation());
+		// UE_LOG(LogTemp, Warning, TEXT("bestIntersectionPoint :"), bestIntersectionPoint->GetActorLocation());
 		FActorSpawnParameters SpawnParams;
 		SpawnParams.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButDontSpawnIfColliding;
 
 		FTransform SpawnTransform = FTransform(randomSpawningPoint->GetActorLocation());
-		AActor* SpawnedNPC = GetWorld()->SpawnActor<AActor>(NPCUnityType, SpawnTransform, SpawnParams);
+		ABaseNPC* SpawnedNPC = GetWorld()->SpawnActor<ABaseNPC>(NPCUnityType, SpawnTransform, SpawnParams);
 		
 		AddPathToNPC(Cast<ACharacter>(SpawnedNPC), PathFinder->GetNavigationPath(randomSpawningPoint));
 	}
@@ -77,10 +80,25 @@ void ANPCsManager::AddPathToNPC(ACharacter* npcCharacter, TArray<AActor*> npcPat
 	}
 }
 
+void ANPCsManager::HandleNavigationCompleted(AActor* Npc, AActor* NavigationPoint)
+{
+	if (Npc && NavigationPoint)
+	{
+		ResetNpcPath(Npc, NavigationPoint);
+        
+		// Optional debug log
+		UE_LOG(LogTemp, Log, TEXT("Resetting path for NPC %s at point %s"), 
+			*Npc->GetName(), 
+			*NavigationPoint->GetName());
+	}
+}
+
 
 void ANPCsManager::ResetNpcPath(AActor* NPC, AActor* InitialPoint)
 {
+	UE_LOG(LogTemp, Warning, TEXT("RESET ---------------------------- :") );
 	if (!NPC) return;
-
+	
+	UE_LOG(LogTemp, Warning, TEXT("TEST :") );
 	AddPathToNPC(Cast<ACharacter>(NPC), PathFinder->GetNavigationPath(InitialPoint));
 }
