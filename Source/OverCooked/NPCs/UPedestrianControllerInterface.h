@@ -14,6 +14,6 @@ class OVERCOOKED_API IPedestrianControllerInterface
 
 	public:
 
-	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "NPC")
-	void SetPathToNavigate(const TArray<AActor*>& path);
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "PedestrianControllerInterface")
+	void SetPathToNavigate(const TArray<AActor*>& Path);
 };

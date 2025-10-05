@@ -6,6 +6,7 @@
 #include "BaseNPC.h"
 #include "UPedestrianControllerInterface.h"
 #include "GameFramework/Character.h"
+#include "GameFramework/CharacterMovementComponent.h"
 #include "Kismet/GameplayStatics.h"
 #include "Runtime/AIModule/Classes/AIController.h"
 
@@ -15,6 +16,7 @@ ANPCsManager::ANPCsManager()
 	MaxNPCCount = 100;
 }
 
+//TODO - Manager should be a singleton
 void ANPCsManager::BeginPlay()
 {
 	Super::BeginPlay();
@@ -23,8 +25,7 @@ void ANPCsManager::BeginPlay()
 
 	Pedestrians = {};
 	
-	PathFinder = NewObject<UNPCPathFinder>(this);
-	auto result = PathFinder->GetExtremePoints();
+	PathFinder = NewObject<UNPCPathFinder>(this);	
 	CreateNPC();
 
 	FTimerHandle NPCSpawnTimerHandle;
@@ -48,6 +49,11 @@ void ANPCsManager::CheckAndSpawnNPC()
 	}
 }
 
+/*
+ * Spawns an NPC at a random spawning point AND assigns it a random path and speed.
+ * TODO - refactor, this function is doing too many things
+ */
+
 void ANPCsManager::CreateNPC()
 {
 	if (NPCUnityType)
@@ -62,21 +68,67 @@ void ANPCsManager::CreateNPC()
 
 		FTransform SpawnTransform = FTransform(randomSpawningPoint->GetActorLocation());
 		ABaseNPC* SpawnedNPC = GetWorld()->SpawnActor<ABaseNPC>(NPCUnityType, SpawnTransform, SpawnParams);
+
+		float RandomSpeed = FMath::FRandRange(75.0f, 150.0f);		
+		SetNPCDisplacementSpeed(Cast<ACharacter>(SpawnedNPC), RandomSpeed);
+
+		FLinearColor SkinColor (
+		FMath::FRand(),
+		FMath::FRand(),
+		FMath::FRand(),
+		1.0f
+		);
+		SetSkinToNPC(Cast<ACharacter>(SpawnedNPC), SkinColor);
 		
 		AddPathToNPC(Cast<ACharacter>(SpawnedNPC), PathFinder->GetNavigationPath(randomSpawningPoint));
+		
 	}
 }
 
-void ANPCsManager::AddPathToNPC(ACharacter* npcCharacter, TArray<AActor*> npcPath)
+void ANPCsManager::AddPathToNPC(ACharacter* NPCCharacter, TArray<AActor*> npcPath)
 {
-	if (!npcCharacter) return;
+	if (!NPCCharacter) return;
 
-	if (!npcCharacter->GetController()) return;
+	if (!NPCCharacter->GetController()) return;
 
-	if (npcCharacter->GetController()->Implements<UPedestrianControllerInterface>())
+	if (NPCCharacter->GetController()->Implements<UPedestrianControllerInterface>())
 	{
-		auto* pedestrianController = Cast<IPedestrianControllerInterface>(npcCharacter->GetController());
-		pedestrianController->Execute_SetPathToNavigate(npcCharacter->GetController(), npcPath);
+		auto* PedestrianController = Cast<IPedestrianControllerInterface>(NPCCharacter->GetController());
+		PedestrianController->Execute_SetPathToNavigate(NPCCharacter->GetController(), npcPath);
+	}
+}
+
+//TODO - REPLACE FOR A PROPER MESH, THIS IS JUST FOR TESTING
+// Generate a random color for the skin
+void ANPCsManager::SetSkinToNPC(ACharacter* NPCCharacter, FLinearColor Color)
+{
+	if (!NPCCharacter) return;
+	// Assuming the NPC has a mesh component
+	TArray<UMeshComponent*> MeshComponents;
+	NPCCharacter->GetComponents<UMeshComponent>(MeshComponents);
+	
+	if (MeshComponents.Num() > 0)
+	{
+		for (UMeshComponent* MeshComponent : MeshComponents)
+		{
+			if (MeshComponent)
+			{
+				UMaterialInstanceDynamic* DynamicMaterial = MeshComponent->CreateAndSetMaterialInstanceDynamic(0);
+				if (DynamicMaterial)
+				{
+					DynamicMaterial->SetVectorParameterValue("Color", Color);
+				}
+			}
+		}
+		
+	}
+}
+
+void ANPCsManager::SetNPCDisplacementSpeed(ACharacter* NPCCharacter, float DisplacementSpeed)
+{
+	if (NPCCharacter && NPCCharacter->GetCharacterMovement())
+	{
+		NPCCharacter->GetCharacterMovement()->MaxWalkSpeed = DisplacementSpeed;
 	}
 }
 
@@ -85,6 +137,14 @@ void ANPCsManager::HandleNavigationCompleted(AActor* Npc, AActor* NavigationPoin
 	if (Npc && NavigationPoint)
 	{
 		ResetNpcPath(Npc, NavigationPoint);
+
+		FLinearColor SkinColor (
+		FMath::FRand(),
+		FMath::FRand(),
+		FMath::FRand(),
+		1.0f
+		);
+		SetSkinToNPC(Cast<ACharacter>(Npc), SkinColor);
         
 		// Optional debug log
 		UE_LOG(LogTemp, Log, TEXT("Resetting path for NPC %s at point %s"), 
@@ -97,7 +157,7 @@ void ANPCsManager::HandleNavigationCompleted(AActor* Npc, AActor* NavigationPoin
 void ANPCsManager::ResetNpcPath(AActor* NPC, AActor* InitialPoint)
 {
 	UE_LOG(LogTemp, Warning, TEXT("RESET ---------------------------- :") );
-	if (!NPC) return;
+	if (!NPC) return;	
 	
 	UE_LOG(LogTemp, Warning, TEXT("TEST :") );
 	AddPathToNPC(Cast<ACharacter>(NPC), PathFinder->GetNavigationPath(InitialPoint));

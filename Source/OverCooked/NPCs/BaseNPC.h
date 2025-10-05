@@ -12,6 +12,8 @@ public:
 	
 	UFUNCTION(BlueprintCallable, Category = "NPC")
 	void BroadcastNavigationCompleted(AActor* lastPointVisited);
+
+	
 	
 };
 
