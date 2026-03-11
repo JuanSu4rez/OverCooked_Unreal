@@ -19,5 +19,5 @@ public:
 	EPatrolPointType Type;
 
 	UFUNCTION(BlueprintCallable)
-	bool IsExtreme();
+	bool IsExtreme() const;
 };
