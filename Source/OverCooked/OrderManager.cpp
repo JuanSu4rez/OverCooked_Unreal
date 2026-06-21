@@ -84,10 +84,10 @@ void AOrderManager::SpawnOrder()
 
 int AOrderManager::CheckOrder(const TArray<AActor*>& DeliveredIngredients)
 {
-    // UE_LOG(LogTemp, Display, TEXT("=== ORDER CHECK STARTED ==="));
+    UE_LOG(LogTemp, Display, TEXT("=== ORDER CHECK STARTED ==="));
     if (DeliveredIngredients.IsEmpty())
     {
-        // UE_LOG(LogTemp, Warning, TEXT("No ingredients delivered!"));
+        UE_LOG(LogTemp, Warning, TEXT("No ingredients delivered!"));
         return -1;
     }
     
@@ -106,9 +106,10 @@ int AOrderManager::CheckOrder(const TArray<AActor*>& DeliveredIngredients)
         if (IngredientActor && IngredientActor->Tags.Num() > 0)
         {
         	IngredientTag = IngredientActor->Tags[0];
-            // UE_LOG(LogTemp, Display, TEXT(" - %s (Actor: %s)"), 
-            //     *IngredientTag.ToString(), 
-            //     *IngredientActor->GetName());
+        	UE_LOG(LogTemp, Error, TEXT("MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM"));
+            UE_LOG(LogTemp, Display, TEXT(" - %s (Actor: %s)"), 
+                *IngredientTag.ToString(), 
+                *IngredientActor->GetName());
             DeliveredIngredientNames.Add(IngredientTag);
         }
     }
